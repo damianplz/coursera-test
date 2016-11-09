@@ -11,18 +11,22 @@
     $scope.checkMenu = function() {
       $scope.resultPhrase="Please enter data first";
       var numberOfPlates = calculateNumberOfPlates($scope.menu)
-      if(!$scope.menu==""){
         if (numberOfPlates>0)
-          $scope.resultPhrase= "Enjooy!";
+          $scope.resultPhrase= "Enjoy!";
         if (numberOfPlates>3)
           $scope.resultPhrase= "Too much!"
-        }
+
     };
 
     function calculateNumberOfPlates(cadena){
       var menu = cadena.split(',');
       console.log(menu.length);
-      return menu.length;
+      var espacios=0;
+      for(var i=0;i<menu.length;i++){
+        if(menu[i]=="")
+          espacios++;
+        }
+      return (menu.length-espacios);
     }
 
   })
