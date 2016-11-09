@@ -13,7 +13,7 @@
       var numberOfPlates = calculateNumberOfPlates($scope.menu)
       if(!$scope.menu==""){
         if (numberOfPlates>0)
-          $scope.resultPhrase= "Enjoy!";
+          $scope.resultPhrase= "Enjooy!";
         if (numberOfPlates>3)
           $scope.resultPhrase= "Too much!"
         }
