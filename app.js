@@ -9,8 +9,11 @@
     $scope.resultPhrase="";
 
     $scope.checkMenu = function() {
-      $scope.resultPhrase="Please enter data first";
-      var numberOfPlates = calculateNumberOfPlates($scope.menu)
+      var aux = $scope.menu;
+      aux=aux.split(',');
+      var numberOfPlates = calculateNumberOfPlates(aux);
+        if(numberOfPlates==0)
+          $scope.resultPhrase="Please enter data first";
         if (numberOfPlates>0)
           $scope.resultPhrase= "Enjoy!";
         if (numberOfPlates>3)
@@ -19,14 +22,15 @@
     };
 
     function calculateNumberOfPlates(cadena){
-      var menu = cadena.split(',');
-      console.log(menu.length);
+      console.log(cadena.length);
       var espacios=0;
-      for(var i=0;i<menu.length;i++){
-        if(menu[i]=="")
+      for(var i=0;i<cadena.length;i++){
+        if(cadena[i]==""){
           espacios++;
+          console.log("Espacios: " +espacios + " Cadena: " + cadena.length);
         }
-      return (menu.length-espacios);
+      }
+      return (cadena.length-espacios);
     }
 
   })
